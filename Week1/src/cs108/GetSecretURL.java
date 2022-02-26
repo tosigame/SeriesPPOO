@@ -2,7 +2,7 @@ package cs108;
 
 public final class GetSecretURL {
     private static BoundedIntQueue newBoundedIntQueue(int capacity) {
-        return new BoundedIntQueueOk(capacity);
+        return new BoundedIntQueueBuggy(capacity);
     }
 
     public static void main(String[] args) {

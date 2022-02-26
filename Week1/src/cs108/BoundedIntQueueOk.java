@@ -107,7 +107,6 @@ public final class BoundedIntQueueOk implements BoundedIntQueue{
         }
 
 
-        System.out.print(contents[0]+"llll ");
 
         return temp;
     }

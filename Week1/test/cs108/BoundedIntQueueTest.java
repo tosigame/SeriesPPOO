@@ -11,13 +11,13 @@ class BoundedIntQueueTest {
 
     @Test
     void capacity() {
-        assertEquals(new BoundedIntQueueOk(5).capacity(),5);
+        assertEquals(new BoundedIntQueueBuggy(5).capacity(),5);
 
     }
 
     @Test
     void size() {
-        BoundedIntQueue bounded = new BoundedIntQueueOk(2);
+        BoundedIntQueue bounded = new BoundedIntQueueBuggy(2);
         bounded.addLast(2);
         bounded.addLast(7);
 
@@ -27,41 +27,41 @@ class BoundedIntQueueTest {
 
     @Test
     void isEmpty() {
-        BoundedIntQueue bounded = new BoundedIntQueueOk(3);
+        BoundedIntQueue bounded = new BoundedIntQueueBuggy(3);
         assertTrue(bounded.isEmpty());
 
     }
 
     @Test
     void isFull() {
-        BoundedIntQueueOk BoundedIntQueueOk=new BoundedIntQueueOk(2);
+        BoundedIntQueueBuggy BoundedIntQueueBuggy=new BoundedIntQueueBuggy(2);
 
-        BoundedIntQueueOk.addLast(2);
-        BoundedIntQueueOk.addLast(2);
-        assertTrue(BoundedIntQueueOk.isFull());
+        BoundedIntQueueBuggy.addLast(2);
+        BoundedIntQueueBuggy.addLast(2);
+        assertTrue(BoundedIntQueueBuggy.isFull());
     }
 
     @Test
     public void constructingAQueueWithNegativeCapacityFails() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new BoundedIntQueueOk(-1);
+            new BoundedIntQueueBuggy(-1);
         });
     }
 
     @Test
     public void capacityIsEqualToWhatWasAsked() {
         for (int c = 0; c <= 100; ++c)
-            assertEquals(c,  new BoundedIntQueueOk(c).capacity());
+            assertEquals(c,  new BoundedIntQueueBuggy(c).capacity());
     }
 
     @Test
     public void initialSizeIsZero() {
-        assertEquals(0,  new BoundedIntQueueOk(10).size());
+        assertEquals(0,  new BoundedIntQueueBuggy(10).size());
     }
 
     @Test
     public void addingToQueueWithZeroCapacityFails() {
-        BoundedIntQueue q = new BoundedIntQueueOk(0);
+        BoundedIntQueueBuggy q = new BoundedIntQueueBuggy(0);
         assertThrows(IllegalStateException.class, () -> {
             q.addLast(0);
         });
@@ -69,7 +69,7 @@ class BoundedIntQueueTest {
 
     @Test
     public void addingToFullQueueFails() {
-        BoundedIntQueue q = new BoundedIntQueueOk(2);
+        BoundedIntQueueBuggy q = new BoundedIntQueueBuggy(2);
         q.addLast(1);
         q.addLast(2);
         assertThrows(IllegalStateException.class, () -> {
@@ -79,7 +79,7 @@ class BoundedIntQueueTest {
 
     @Test
     public void removingFromEmptyQueueFails() {
-        BoundedIntQueue q = new BoundedIntQueueOk(10);
+        BoundedIntQueueBuggy q = new BoundedIntQueueBuggy(10);
         assertThrows(IllegalStateException.class, () -> {
             q.removeFirst();
         });
@@ -88,7 +88,7 @@ class BoundedIntQueueTest {
     @Test
     public void sizeReturnsCorrectValue() {
         int capacity = 100;
-        BoundedIntQueue q = new BoundedIntQueueOk(capacity);
+        BoundedIntQueueBuggy q = new BoundedIntQueueBuggy(capacity);
         for (int i = 0; i < capacity; ++i) {
             assertEquals(i, q.size());
             q.addLast(i);
@@ -98,7 +98,7 @@ class BoundedIntQueueTest {
     @Test
     public void isEmptyIsInitiallyTrue() {
         for (int capacity = 0; capacity < 100; ++capacity) {
-            BoundedIntQueue q = new BoundedIntQueueOk(capacity);
+            BoundedIntQueueBuggy q = new BoundedIntQueueBuggy(capacity);
             assertTrue(q.isEmpty());
         }
     }
@@ -106,7 +106,7 @@ class BoundedIntQueueTest {
     @Test
     public void isFullIsInitiallyFalse() {
         for (int capacity = 1; capacity < 100; ++capacity) {
-            BoundedIntQueue q = new BoundedIntQueueOk(capacity);
+            BoundedIntQueueBuggy q = new BoundedIntQueueBuggy(capacity);
             assertFalse(q.isFull());
         }
     }
@@ -114,7 +114,7 @@ class BoundedIntQueueTest {
     @Test
     public void hasFirstInFirstOutBehavior() {
         Random rng = new Random();
-        BoundedIntQueue q = new BoundedIntQueueOk(20);
+        BoundedIntQueueBuggy q = new BoundedIntQueueBuggy(20);
         int nextToAdd = 0;
         int nextToRemove = 0;
         for (int i = 0; i < 1000; ++i) {
@@ -129,24 +129,24 @@ class BoundedIntQueueTest {
     }
     @Test
     void addLast() {
-        BoundedIntQueueOk BoundedIntQueueOk=new BoundedIntQueueOk(5);
-        BoundedIntQueueOk.addLast(2);
-        BoundedIntQueueOk.addLast(3);
-        BoundedIntQueueOk.addLast(4);
-        BoundedIntQueueOk.addLast(5);
-        BoundedIntQueueOk.addLast(6);
+        BoundedIntQueueBuggy BoundedIntQueueBuggy=new BoundedIntQueueBuggy(5);
+        BoundedIntQueueBuggy.addLast(2);
+        BoundedIntQueueBuggy.addLast(3);
+        BoundedIntQueueBuggy.addLast(4);
+        BoundedIntQueueBuggy.addLast(5);
+        BoundedIntQueueBuggy.addLast(6);
 
-        assertEquals(BoundedIntQueueOk.removeFirst(),3);
+        assertEquals(BoundedIntQueueBuggy.removeFirst(),2);
     }
 
     @Test
     void removeFirst() {
-        BoundedIntQueueOk BoundedIntQueueOk=new BoundedIntQueueOk(5);
+        BoundedIntQueueBuggy BoundedIntQueueBuggy=new BoundedIntQueueBuggy(5);
 
-        BoundedIntQueueOk.addLast(6);
+        BoundedIntQueueBuggy.addLast(6);
 
 
-        assertEquals(BoundedIntQueueOk.removeFirst(),0);
+        assertEquals(BoundedIntQueueBuggy.removeFirst(),6);
 
 
 
