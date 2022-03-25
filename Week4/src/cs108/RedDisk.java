@@ -8,6 +8,6 @@ public final class RedDisk implements ImageRGB {
     @Override
     public ColorRGB apply(double x, double y) {
         double r = sqrt(x * x + y * y);
-        return r <= 1d ? ColorRGB.RED : ColorRGB.WHITE;
+        return r <= 10d ? ColorRGB.RED : ColorRGB.WHITE;
     }
 }

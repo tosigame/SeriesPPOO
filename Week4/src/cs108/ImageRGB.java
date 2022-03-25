@@ -5,6 +5,6 @@ package cs108;
  * couleur à chaque point du plan.
  */
 
-public interface ImageRGB {
-    ColorRGB apply(double x, double y);
+public interface ImageRGB<T> {
+    T apply(double x, double y);
 }

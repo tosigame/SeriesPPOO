@@ -10,7 +10,7 @@ public final class Main {
     public static void main(String[] args) {
         // L'image à afficher, à modifier au fur et à mesure de
         // votre avancement.
-        ImageRGB image = RedDisk.IMAGE;
+        ImageRGB image = Chessboard.IMAGE;
 
         invokeLater(() -> {
             try {
