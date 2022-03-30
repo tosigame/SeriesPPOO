@@ -1,8 +1,12 @@
 package cs108;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileOutputStream;
+
 
 import static javax.swing.SwingUtilities.invokeLater;
 
@@ -10,7 +14,9 @@ public final class Main {
     public static void main(String[] args) {
         // L'image à afficher, à modifier au fur et à mesure de
         // votre avancement.
-        ImageRGB image = Chessboard.IMAGE;
+        Image<ColorRGB> imageTemp = new Chessboard(0.05f,ColorRGB.BLUE,ColorRGB.GREEN);
+       // Mysterious<ColorRGB> image=new Mysterious<>(imageTemp);
+        Image<ColorRGB> image=new Rotated<>(Math.toRadians(33),imageTemp);
 
         invokeLater(() -> {
             try {
@@ -31,11 +37,11 @@ public final class Main {
 
     @SuppressWarnings("serial")
     private static final class ImageComponent extends JComponent {
-        private final ImageRGB image;
+        private final Image<ColorRGB> image;
         private final double centerX, centerY;
         private final double width;
 
-        public ImageComponent(ImageRGB image, double centerX, double centerY, double width) {
+        public ImageComponent(Image<ColorRGB> image, double centerX, double centerY, double width) {
             this.image = image;
             this.centerX = centerX;
             this.centerY = centerY;
@@ -64,6 +70,13 @@ public final class Main {
             }
 
             g.drawImage(jImage, 0, 0, null);
+            try(FileOutputStream fout=new FileOutputStream(new File("squares1.png"))){
+                ImageIO.write(jImage,"jpg",fout);
+
+            }catch(Exception e){
+                System.out.println("smh went wrong");
+            }
+
         }
     }
 }
