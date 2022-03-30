@@ -1,15 +1,12 @@
 package cs108;
 
-public class HorizontalGradientMask<T> implements Image<ColorRGB>{
-    private final Image<T> image;
-    private final double clearness;
-    public HorizontalGradientMask(Image<T> image,double clearness){
-        this.image=image;
-        this.clearness=clearness;
-    }
-    @Override
-    public ColorRGB apply(double x, double y) {
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 
-        return this.clearness
+public class HorizontalGradientMask implements Image<Double>{
+
+    @Override
+    public Double apply(double x, double y) {
+        return max(0, min((x + 1d) / 2d, 1d));
     }
 }

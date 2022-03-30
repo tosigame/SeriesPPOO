@@ -15,8 +15,11 @@ public final class Main {
         // L'image à afficher, à modifier au fur et à mesure de
         // votre avancement.
         Image<ColorRGB> imageTemp = new Chessboard(0.05f,ColorRGB.BLUE,ColorRGB.GREEN);
-       // Mysterious<ColorRGB> image=new Mysterious<>(imageTemp);
-        Image<ColorRGB> image=new Rotated<>(Math.toRadians(33),imageTemp);
+        Image<ColorRGB> rotatedSquares=new Rotated<>(45,imageTemp);
+        Image<ColorRGB> circle=new RedDisk();
+        Image<ColorRGB> image=new Composed(circle,rotatedSquares,RedDisk.IMAGE);
+
+
 
 
         invokeLater(() -> {
@@ -71,7 +74,7 @@ public final class Main {
             }
 
             g.drawImage(jImage, 0, 0, null);
-            try(FileOutputStream fout=new FileOutputStream(new File("squares1.png"))){
+            try(FileOutputStream fout=new FileOutputStream(new File("curiousImage.png"))){
                 ImageIO.write(jImage,"jpg",fout);
 
             }catch(Exception e){

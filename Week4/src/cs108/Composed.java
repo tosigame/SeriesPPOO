@@ -1,16 +1,20 @@
 package cs108;
 
-public class Composed<T> implements Image<ColorRGB>{
+class Composed implements Image<ColorRGB> {
+    private final Image<ColorRGB> bg, fg;
+    private final Image<Double> mask;
 
-    private final Image<T> image;
-    private final Image<T> mask;
-    public Composed(Image<T> image,Image<T> mask){
-        this.image=image;
-        this.mask=mask;
+    public Composed(Image<ColorRGB> bg,
+                    Image<ColorRGB> fg,
+                    Image<Double> mask) {
+        this.bg = bg;
+        this.fg = fg;
+        this.mask = mask;
     }
+
     @Override
     public ColorRGB apply(double x, double y) {
-
-
+        return bg.apply(x, y)
+                .mixWith(fg.apply(x, y), mask.apply(x, y));
     }
 }
