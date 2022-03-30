@@ -18,6 +18,7 @@ public final class Main {
        // Mysterious<ColorRGB> image=new Mysterious<>(imageTemp);
         Image<ColorRGB> image=new Rotated<>(Math.toRadians(33),imageTemp);
 
+
         invokeLater(() -> {
             try {
                 var mainWindow = new JFrame("Image viewer");
