@@ -1,10 +1,12 @@
 package cs108;
 
+import java.util.*;
+
 public class Main {
     static final int LENGTH=Integer.SIZE;
     public static void main(String[] args) {
 
-        String alphabet ="abcdefghijklmnopqrstuvwxyz";
+       /* String alphabet ="abcdefghijklmnopqrstuvwxyz";
         //for (int i = 0; i < alphabet.length(); i++) {
         //    System.out.println(i+": "+ alphabet.charAt(i));
         //}
@@ -64,7 +66,70 @@ public class Main {
 
 // OR, for superscalar CPUs:
    //     w = (w & ~m) | (-f & m);
+
+        */
+        List<Integer> ints =new ArrayList<Integer>();
+        ints.add(1);
+        ints.add(2);
+        List<? extends Number> nums=ints;
+        double dbl=sum(nums);
+        System.out.println(dbl);
+        System.out.println(max(ints));
+        ///nums.add(3.14);
+
+
     }
+
+    public static double sum(Collection<? extends Number> nums){
+        double s=0.0;
+        for(Number num:nums)s+=num.doubleValue();
+        return s;
+    }
+    public static <T extends Comparable<T>> T max(Collection<T> coll){
+        Iterator<T> it=coll.iterator();
+        T candidate=it.next();
+        while(it.hasNext()){
+            T elt=it.next();
+            if(candidate.compareTo(elt)<0)candidate=elt;
+
+        }
+        return candidate;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     static int extractBits(int number, int from , int toInclusive){
         int length= toInclusive-from+1;
