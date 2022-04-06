@@ -68,6 +68,7 @@ public class Main {
    //     w = (w & ~m) | (-f & m);
 
         */
+        /*
         List<Integer> ints =new ArrayList<Integer>();
         ints.add(1);
         ints.add(2);
@@ -77,9 +78,26 @@ public class Main {
         System.out.println(max(ints));
         ///nums.add(3.14);
 
+         */
+        System.out.println(BitCount2(0b111000));
+
 
     }
 
+    public static int BitCount(int num){
+
+        return Integer.toBinaryString(num).replace("0","").length();
+    }
+    public static int BitCount2(int num){
+        int count=0;
+
+        for (int i = 0; i < 32; i++) {
+            if((num << i) >>> 31==1){
+                count++;
+            }
+        }
+        return count;
+    }
     public static double sum(Collection<? extends Number> nums){
         double s=0.0;
         for(Number num:nums)s+=num.doubleValue();
