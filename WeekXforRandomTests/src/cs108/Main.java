@@ -79,10 +79,11 @@ public class Main {
         ///nums.add(3.14);
 
          */
-        System.out.println(BitCount2(0b111000));
+       // System.out.println(BitCount2(0b111000));
 
 
     }
+
 
     public static int BitCount(int num){
 

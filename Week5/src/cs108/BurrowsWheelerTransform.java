@@ -7,13 +7,21 @@ public final class BurrowsWheelerTransform {
     private BurrowsWheelerTransform() {}
 
     public static Pair<Integer, String> forward(String s) {
-        if(s.isEmpty()){throw new IllegalStateException();}
+        if(s.isEmpty()){throw new IllegalArgumentException();}
 
-        Queue<Character> queue=new LinkedList<>(){};
-        List<Character> characters=s.chars().mapToObj(e->(char) e).collect(Collectors.toList());
-        System.out.println(Arrays.toString(characters.toArray()));
+        List<Pair<Integer,String>> rotations=new ArrayList<>();
+        for (int i = 0; i < s.length(); i++) {
+            rotations.add(new Pair<>(i,s.substring(s.length()-i)+s.substring(0,s.length()-i)));
+        }
+        var OG=rotations.get(0);
+        rotations.sort(Comparator.comparing(Pair::second));
 
-        return null;
+        String str="";
+        for (int i = 0; i < rotations.size(); i++) {
+            str+=rotations.get(i).second().charAt(s.length()-1);
+        }
+        //rotations.forEach(System.out::println);
+        return new Pair<>(rotations.indexOf(OG), str);
         //throw new Error("à faire");
     }
 
