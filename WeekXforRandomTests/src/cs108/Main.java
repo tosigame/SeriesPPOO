@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Main {
     static final int LENGTH=Integer.SIZE;
-    public static void main(String[] args) {
+   // public static void main(String[] args) {
 
        /* String alphabet ="abcdefghijklmnopqrstuvwxyz";
         //for (int i = 0; i < alphabet.length(); i++) {
@@ -81,6 +81,36 @@ public class Main {
          */
        // System.out.println(BitCount2(0b111000));
 
+
+    //}
+    public static void main(String[] args) {
+
+
+        sort(List.of(27, 71, 17, 1, 77, 11, 24,9999,111,2));
+    }
+    static public void sort(List<Integer> ints){
+        List<Integer> sortedList=ints;
+        for (int i = 0; i < 7; i++) {
+            sortedList=oneIteration(sortedList,i);
+        }
+       // System.out.println(sortedList);
+    }
+
+    static public ArrayList<Integer> oneIteration(List<Integer> ints,int depth){
+        List<List<Integer>> lists=new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            lists.add(new ArrayList<>());
+        }
+
+        for (int i:ints) {
+            lists.get((int) (i /Math.pow(10,depth))%10).add(i);
+        }
+        ArrayList<Integer> newList=new ArrayList<>();
+        for (var l : lists) {
+            newList.addAll(l);
+        }
+        //System.out.println(newList);
+        return newList;
 
     }
 
