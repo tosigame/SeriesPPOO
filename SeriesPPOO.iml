@@ -6,9 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Week3/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/WeekXforRandomTests/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Week5/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/WeekXforRandomTests/Test" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/Week5/test" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
