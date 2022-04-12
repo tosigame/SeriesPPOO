@@ -87,6 +87,128 @@ public class Main {
 
 
         sort(List.of(27, 71, 17, 1, 77, 11, 24,9999,111,2));
+
+        int flag0_3=0b1010;
+
+
+        int flag28_31=0b1000;
+        int num =-1;
+        int clearBits=0b1111;
+        num&= ~(0b1111 & num);
+        num|=flag0_3;
+
+        num&=~(clearBits<<28);
+        num|=flag28_31<<28;
+       // System.out.println(Integer.toBinaryString(num));
+
+        //String str=String.format("%tH%n minutes:",59,2,2);
+       // System.out.print(str);
+        Comparator<Integer> it= Comparator.comparingInt(Integer::intValue);
+        Comparator<ArrayList<Integer>> c=(o1,o2)-> o1.get(0)-o2.get(0);
+
+        List<Integer > list= new ArrayList<>(List.of(27, 71, 17, 1, 77, 11, 24, 9999, 111, 2,Integer.MAX_VALUE,Integer.MIN_VALUE));
+        list.sort(it);
+
+        String str="lol Heard9NewsOn~tb";
+        System.out.println(Arrays.toString(str.split("[a-z1-9A-Z]")));
+        //System.out.println(sort(List.of(27, 71, 17, 1, 77, 11, 24,9999,111,2));
+        //};
+
+       // setBits(-1,1,2,5);
+
+      //  for (var i :new ArrayList<>(list)) {}
+        list.sort(Comparator.naturalOrder());
+        StringBuilder stringBuilder=new StringBuilder();
+        new HashMap<>().containsKey()
+        /*
+
+
+
+        HashMaps<>
+
+        hm.entrySet().iterator() returns an iterator that acts as a cursor and points at the first element of the set and moves on till the end.
+        to iterate over the keys use keySet()
+        to iterate over the values only use map.values()
+        to get both values and keys use map.entrySet() is used to retrieve all the key-value pairs called Map.Entries and stores internally into a set.
+        for (var i :new ArrayList<>(list)) {} foreach loop takes a variable i from the given list var i : list
+        if need to remove elements during iteration use Iterator =entries=map.entrySet().iterator();
+
+        Iterators:
+        values.sort(comparator);
+        Comparator.naturalOrder()
+
+        Collections
+        static <T> List<T>	nCopies(int n, T o) Returns an immutable list consisting of n copies of the specified object.
+        static <T> Comparator<T>	reverseOrder()
+        static <T> void	fill(List<? super T> list, T obj)  Replaces all of the elements of the specified list with the specified element.
+
+
+
+
+        List<E> subList(int fromIndex,int toIndex) create a sub list view of certain elements
+
+
+
+        System.out.println(String.format("%32s", Integer.toBinaryString(ourBits)).replace(' ', '0'));
+        Collections.sort(rs);
+
+        StringBuilder newString= new StringBuilder();
+        then StringAppend to add elements, finally toString to get the final String
+
+        String:
+        charAt(int index)	Returns the char value at the specified index.
+        static String	format(String format, Object... args)
+        int	indexOf(String str)
+        int	indexOf(int ch)	Returns the index within this string of the first occurrence of the specified character.
+        String	replace(char oldChar, char newChar)
+        Returns a string resulting from replacing all occurrences of oldChar in this string with newChar.
+        String[] split(String regex)	Splits this string around matches of the given regular expression.
+        String	substring​(int beginIndex)
+        Returns a string that is a substring of this string.
+        String	toLowerCase()
+        Converts all of the characters in this String to lower case using the rules of the default locale.
+
+
+
+        Sets
+        boolean add(E e)
+        boolean addAll(Collection<? extends E> c)
+        void clear
+        boolean contains(Object o)
+        boolean containsAll(Collection<?> c)
+        boolean	retainAll(Collection<?> c) Retains only the elements in this set that are contained in the specified collection (optional operation).
+        boolean remove(Object o)
+        Object[] toArray()
+
+        static String	toBinaryString(int i)
+
+
+        Comparator<ArrayList<Integer>> c=(o1,o2)-> o1.get(0)-o2.get(0);
+        compartor.reversed() to get inverse order
+
+
+        for (Iterator<Integer> it = ints. iterator(); it.hasNext(); ) {
+        int n = it.next();
+        s += n;
+        }
+
+        List<Integer> ints = Arrays.asList(1,2,3);
+        Substitution Principle: a variable of a given type may be assigned a value of any subtype
+        of that type, and a method with a parameter of a given type may be invoked with an
+        argument of any subtype of that type.
+
+        The Get and Put Principle: use an extends wildcard when you only get values out of a
+        structure, use a super wildcard when you only put values into a structure, and don’t use
+        a wildcard when you both get and put.
+
+         */
+
+
+
+
+
+
+
     }
     static public void sort(List<Integer> ints){
         List<Integer> sortedList=ints;
@@ -181,23 +303,16 @@ public class Main {
 
 
     static int extractBits(int number, int from , int toInclusive){
-        int length= toInclusive-from+1;
-        return number << LENGTH-toInclusive-1 >>> LENGTH-length;
-
+        int length= toInclusive-from+1;  // length of wished extracted bits
+        return number << LENGTH-toInclusive-1 >>> LENGTH-length;   // move bits to right then to left putting in 0s so >>>
     }
     static int setBits(int number , int bits,int from , int toInclusive){
-        //step 0 find the int for the 1s bit
-        int length= toInclusive-from+1;
+        int length= toInclusive-from+1;//step 0 find the int for the 1s bit
         int toClear=-1;
-       toClear=toClear>>>LENGTH-length;
-       // System.out.println(String.format("%16s", Integer.toBinaryString(toClear>>>LENGTH-length)).replace(' ', '0'));
-        //step 1 clear the necessary bits
-       // System.out.println(String.format("%16s", Integer.toBinaryString((~((-1>>>toInclusive-from+1) << from)))));
-        System.out.println(Integer.toBinaryString(number));
-        System.out.println(Integer.toBinaryString(number & (~((toClear) << from))));
-        number&= ~((toClear) << from);
-        number |= bits<<LENGTH-length;
-        System.out.println(String.format("%16s", Integer.toBinaryString(bits<<LENGTH-length)).replace(' ', '0'));
+       toClear=toClear>>>LENGTH-length; // find bits to clear
+        number&= ~((toClear) << from); //clear those bits
+        number |= bits<<LENGTH-length; // change those bits
+        System.out.println(String.format("%32s", Integer.toBinaryString(bits<<LENGTH-length)).replace(' ', '0'));
         return number;
     }
 }
