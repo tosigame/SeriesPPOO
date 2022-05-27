@@ -1,10 +1,11 @@
 package cs108;
 
+import java.io.InputStreamReader;
 import java.util.*;
 
 public class Main {
-    static final int LENGTH=Integer.SIZE;
-   // public static void main(String[] args) {
+    static final int LENGTH = Integer.SIZE;
+    // public static void main(String[] args) {
 
        /* String alphabet ="abcdefghijklmnopqrstuvwxyz";
         //for (int i = 0; i < alphabet.length(); i++) {
@@ -79,48 +80,75 @@ public class Main {
         ///nums.add(3.14);
 
          */
-       // System.out.println(BitCount2(0b111000));
+    // System.out.println(BitCount2(0b111000));
 
 
     //}
+    static class A<T> {
+        T[] ts = (T[]) new Object[2];
+
+        public A(T t) {
+            ts[0] = t;
+            System.out.println(ts[0]);
+        }
+    }
+
     public static void main(String[] args) {
 
 
-        sort(List.of(27, 71, 17, 1, 77, 11, 24,9999,111,2));
+        sort(List.of(27, 71, 17, 1, 77, 11, 24, 9999, 111, 2));
 
-        int flag0_3=0b1010;
+        int flag0_3 = 0b1010;
 
 
-        int flag28_31=0b1000;
-        int num =-1;
-        int clearBits=0b1111;
-        num&= ~(0b1111 & num);
-        num|=flag0_3;
+        int flag28_31 = 0b1000;
+        int num = -1;
+        int clearBits = 0b1111;
+        num &= ~(0b1111 & num);
+        num |= flag0_3;
 
-        num&=~(clearBits<<28);
-        num|=flag28_31<<28;
-       // System.out.println(Integer.toBinaryString(num));
+        num &= ~(clearBits << 28);
+        num |= flag28_31 << 28;
+        // System.out.println(Integer.toBinaryString(num));
 
         //String str=String.format("%tH%n minutes:",59,2,2);
-       // System.out.print(str);
-        Comparator<Integer> it= Comparator.comparingInt(Integer::intValue);
-        Comparator<ArrayList<Integer>> c=(o1,o2)-> o1.get(0)-o2.get(0);
+        // System.out.print(str);
+        // Comparator<Integer> it= Comparator.comparingInt((o1,o2)->{
+        //      o1-o2;
+        // }).reversed();
+        Comparator<ArrayList<Integer>> c = (o1, o2) -> o1.get(0) - o2.get(0);
 
-        List<Integer > list= new ArrayList<>(List.of(27, 71, 17, 1, 77, 11, 24, 9999, 111, 2,Integer.MAX_VALUE,Integer.MIN_VALUE));
-        list.sort(it);
+        ArrayList<Integer> list = new ArrayList<>(List.of(27, 71, 17, 1, 77, 11, 24, 9999, 111, 2, Integer.MAX_VALUE, Integer.MIN_VALUE));
+        //list.sort(it);
 
-        String str="lol Heard9NewsOn~tb";
+        String str = "lol Heard9NewsOn~tb";
         System.out.println(Arrays.toString(str.split("[a-z1-9A-Z]")));
         //System.out.println(sort(List.of(27, 71, 17, 1, 77, 11, 24,9999,111,2));
         //};
+        // list.sort(Integer.naturalOrder().reversed());
 
-       // setBits(-1,1,2,5);
+        // setBits(-1,1,2,5);
 
-      //  for (var i :new ArrayList<>(list)) {}
+        //  for (var i :new ArrayList<>(list)) {}
         list.sort(Comparator.naturalOrder());
-        StringBuilder stringBuilder=new StringBuilder();
-       // new HashMap<>().containsKey()
+        StringBuilder stringBuilder = new StringBuilder();
+        // new HashMap<>().containsKey()
+
+
+        System.out.println(010);
+        String str2 = "EPFL";
+        //  String rotatedString=str2.substring(index)+ str2.charAt(0,index);
+
+
+        A<ArrayList<Integer>> a = new A<ArrayList<Integer>>(list);
+
+
+        //try(InputStreamReader g=new InputStreamReader("tesxt")) {
+
+        // }
         /*
+
+
 
 
 
@@ -204,30 +232,27 @@ public class Main {
          */
 
 
-
-
-
-
-
     }
-    static public void sort(List<Integer> ints){
-        List<Integer> sortedList=ints;
+
+    static public void sort(List<Integer> ints) {
+        List<Integer> sortedList = ints;
         for (int i = 0; i < 7; i++) {
-            sortedList=oneIteration(sortedList,i);
+            sortedList = oneIteration(sortedList, i);
         }
-       // System.out.println(sortedList);
+        // System.out.println(sortedList);
     }
 
-    static public ArrayList<Integer> oneIteration(List<Integer> ints,int depth){
-        List<List<Integer>> lists=new ArrayList<>();
+    static public ArrayList<Integer> oneIteration(List<Integer> ints, int depth) {
+        List<List<Integer>> lists = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             lists.add(new ArrayList<>());
         }
 
-        for (int i:ints) {
-            lists.get((int) (i /Math.pow(10,depth))%10).add(i);
+
+        for (int i : ints) {
+            lists.get((int) (i / Math.pow(10, depth)) % 10).add(i);
         }
-        ArrayList<Integer> newList=new ArrayList<>();
+        ArrayList<Integer> newList = new ArrayList<>();
         for (var l : lists) {
             newList.addAll(l);
         }
@@ -237,31 +262,34 @@ public class Main {
     }
 
 
-    public static int BitCount(int num){
+    public static int BitCount(int num) {
 
-        return Integer.toBinaryString(num).replace("0","").length();
+        return Integer.toBinaryString(num).replace("0", "").length();
     }
-    public static int BitCount2(int num){
-        int count=0;
+
+    public static int BitCount2(int num) {
+        int count = 0;
 
         for (int i = 0; i < 32; i++) {
-            if((num << i) >>> 31==1){
+            if ((num << i) >>> 31 == 1) {
                 count++;
             }
         }
         return count;
     }
-    public static double sum(Collection<? extends Number> nums){
-        double s=0.0;
-        for(Number num:nums)s+=num.doubleValue();
+
+    public static double sum(Collection<? extends Number> nums) {
+        double s = 0.0;
+        for (Number num : nums) s += num.doubleValue();
         return s;
     }
-    public static <T extends Comparable<T>> T max(Collection<T> coll){
-        Iterator<T> it=coll.iterator();
-        T candidate=it.next();
-        while(it.hasNext()){
-            T elt=it.next();
-            if(candidate.compareTo(elt)<0)candidate=elt;
+
+    public static <T extends Comparable<T>> T max(Collection<T> coll) {
+        Iterator<T> it = coll.iterator();
+        T candidate = it.next();
+        while (it.hasNext()) {
+            T elt = it.next();
+            if (candidate.compareTo(elt) < 0) candidate = elt;
 
         }
         return candidate;
@@ -269,50 +297,18 @@ public class Main {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    static int extractBits(int number, int from , int toInclusive){
-        int length= toInclusive-from+1;  // length of wished extracted bits
-        return number << LENGTH-toInclusive-1 >>> LENGTH-length;   // move bits to right then to left putting in 0s so >>>
+    static int extractBits(int number, int from, int toInclusive) {
+        int length = toInclusive - from + 1;  // length of wished extracted bits
+        return number << LENGTH - toInclusive - 1 >>> LENGTH - length;   // move bits to right then to left putting in 0s so >>>
     }
-    static int setBits(int number , int bits,int from , int toInclusive){
-        int length= toInclusive-from+1;//step 0 find the int for the 1s bit
-        int toClear=-1;
-       toClear=toClear>>>LENGTH-length; // find bits to clear
-        number&= ~((toClear) << from); //clear those bits
-        number |= bits<<LENGTH-length; // change those bits
-        System.out.println(String.format("%32s", Integer.toBinaryString(bits<<LENGTH-length)).replace(' ', '0'));
+
+    static int setBits(int number, int bits, int from, int toInclusive) {
+        int length = toInclusive - from + 1;//step 0 find the int for the 1s bit
+        int toClear = -1;
+        toClear = toClear >>> LENGTH - length; // find bits to clear
+        number &= ~((toClear) << from); //clear those bits
+        number |= bits << LENGTH - length; // change those bits
+        System.out.println(String.format("%32s", Integer.toBinaryString(bits << LENGTH - length)).replace(' ', '0'));
         return number;
     }
 }
